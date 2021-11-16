@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for("static", filename="styles.css") }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img data-v-27b47ae7="" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="logo gobierno de méxico" class="logos" style="width: 8rem; margin-top: -2%; margin-bottom: -2%; margin-left: -15%;">
+              </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/"><i class="fa fa-home" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/evaluacionesSSE">Evaluaciones SSE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/asistencias">Asistencias</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+<footer>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logofooter.png" href="/" alt="logo gobierno de méxico" class="logo_footer" style="max-width: 80%;">
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+            <a href="https://www.gob.mx/tramites/ficha/presentacion-de-quejas-y-denuncias-en-la-sfp/SFP54"><u>Denuncia contra servidores públicos</u></a>
+            <h6 id="redes">Síguenos en:</h6>
+            <ul id="social" class="list-inline">
+                <li class="list-inline-item">
+                    <a href="https://www.facebook.com/gobmexico/" target="_blank" red="Facebook" title="Enlace a facebook abre en una nueva ventana">
+                        <img alt="Facebook" src="https://framework-gb.cdn.gob.mx/landing/img/facebook.png">
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="https://twitter.com/GobiernoMX" target="_blank" red="Twitter" title="Enlace a twitter abre en una nueva ventana">
+                        <img data-v-58f74857="" alt="Twitter" src="https://framework-gb.cdn.gob.mx/landing/img/twitter.png">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid footer-pleca">
+    <div class="row">
+        <div class="column">
+        </div></div></div>
+</footer>
+<script>
+    function eliminarDiacriticos(texto) {
+            texto = texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"");
+            return texto.toUpperCase();
+        }
+    //  Prueba
+    function mostrarSinDiacriticos(inp){
+        document.getElementById(inp.id)
+            .value = eliminarDiacriticos(inp.value);
+        console.log(document.getElementById(inp.id).value);
+    }
+</script>
+</body>
+</html>

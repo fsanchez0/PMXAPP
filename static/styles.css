@@ -1,0 +1,60 @@
+.nav-link:hover{
+    color: #d4c19c!important;
+}
+
+footer{
+    background-color: #12322b;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+}
+
+.footer-pleca{
+    background-image: url(https://framework-gb.cdn.gob.mx/landing/img/pleca.svg);
+    background-color: #12322b;
+    background-repeat: repeat-x;
+}
+
+.big-button {
+    border-radius: 10%;
+    width: 300px;
+    height: 300px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 4vh;
+    color: #9d2449;
+    box-shadow: 0 5px 5px rgba(50, 50, 93, 0.2), 0 5px 5px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 350ms;
+    transition: transform 350ms;
+    cursor: pointer;
+}
+.big-button:hover {
+    box-shadow: 0 15px 35px rgba(50, 50, 93, 0.5), 0 5px 15px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
+  }
+
+.big-button:active {
+    box-shadow: 0 5px 5px rgba(50, 50, 93, 0.2), 0 5px 5px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }
+
+.big-button__title {
+    font-size: 2rem;
+    text-align: center;
+    transition: transform 350ms;
+    user-select: none;
+}
+
+.big-button__title:hover .big-button__title {
+    transform: translateY(-10px);
+  }
+
+.big-button__icon {
+    color: #9d2449;
+    font-size: 15vh;
+  }

@@ -1,0 +1,36 @@
+{% extends "base_template.html" %}
+{% block title %}APP PEMEX{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="big-button" onclick="window.location='/asistencias';">
+              <div class="big-button__title">
+                Gas Bienestar
+              </div>
+              <div class="big-button__icon">
+                <i class="fa fa-fire"></i>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="big-button" onclick="window.location='/evaluacionesSSE';">
+              <div class="big-button__title">
+                Evaluaciones SSE
+              </div>
+                  <div class="big-button__icon">
+                  <i class="fa fa-check-square"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="big-button" onclick="window.location='http://www.google.com.mx';">
+              <div class="big-button__title">
+                Organigrama
+              </div>
+                  <div class="big-button__icon">
+                  <i class="fa fa-sitemap"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
