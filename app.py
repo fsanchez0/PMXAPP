@@ -1,4 +1,4 @@
-from flask_login import LoginManager, login_manager, current_user, login_user
+from flask_login import LoginManager, login_manager, current_user, login_user, login_required
 from flask import Flask, render_template, redirect, url_for, request
 from sqlalchemy.ext.declarative import declarative_base
 from flask_sqlalchemy import SQLAlchemy
@@ -6,7 +6,10 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from werkzeug.urls import url_parse
 from forms import LoginForm
+from waitress import serve
+import os
 
+project_dir = os.path.dirname(os.path.abspath(__file__))
 database_file = "mssql+pymssql://sapp:Pemex.2020*@vwtutsqlp065.un.pemex.com/PEMEX"
 engine = create_engine(database_file)
 Session = sessionmaker(bind=engine)
@@ -20,7 +23,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 from models.User import Usuario
 from models.Asistencias import Asistencias
-from models import Candidato, ProgramacionEvaluacion
+from models import Candidato
 login_manager = LoginManager(app)
 
 
@@ -73,6 +76,6 @@ def login():
     return render_template('login_form.html', form=form)
 
 
-if __name__ == '__main__':
-    Base.metadata.create_all(db.engine)
-    app.run()
+Base.metadata.create_all(db.engine)
+serve(app, host='0.0.0.0', port=8080, threads=1)
+#app.run()

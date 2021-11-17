@@ -1,5 +1,3 @@
-from sqlalchemy.orm import relationship
-
 from app import db
 
 
@@ -15,7 +13,10 @@ class Candidato(db.Model):
     puesto = db.Column(db.String(100))
     centro_trabajo = db.Column(db.String(100))
     estado_civil = db.Column(db.String(10))
-    #programacion_evaluacion = relationship("ProgramacionEvaluacion", uselist=False, backref="candidato")
+    f_evaluacion_psic = db.Column(db.DATETIME)  # Fecha y Hora
+    f_evaluacion_piro = db.Column(db.DATETIME)  # Fecha y Hora
+    localizacion_eval = db.Column(db.String(100))
+    motivo_evaluacion = db.Column(db.String(30))
 
     def __repr__(self):
         return f'Candidato {self.id}>'
