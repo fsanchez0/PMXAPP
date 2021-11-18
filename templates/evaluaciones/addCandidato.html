@@ -6,19 +6,19 @@
                 <div class="row mb-3">
                     <label for="nombre" class="col-sm-4 col-form-label" >Nombre</label>
                     <div class="col-sm-8">
-                        <input id="nombre" oninput="mostrarSinDiacriticos(this)" type="text" name="NOMBRE" placeholder="Nombre" class="form-control">
+                        <input id="nombre" oninput="mostrarSinDiacriticos(this)" type="text" name="nombre" placeholder="Nombre" class="form-control">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="edad" class="col-sm-4 col-form-label">Edad</label>
                     <div class="col-sm-8">
-                        <input type="number" name="EDAD" placeholder="Edad" class="form-control">
+                        <input type="number" name="edad" placeholder="Edad" class="form-control">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="id_bt" class="col-sm-4 col-form-label">ID BT</label>
                     <div class="col-sm-8">
-                        <input type="number" name="ID_BT" placeholder="ID BT" class="form-control">
+                        <input type="number" name="id_bt" placeholder="ID BT" class="form-control">
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -34,7 +34,7 @@
                 <div class="row mb-3">
                     <label for="formacion_academica" class="col-sm-4 col-form-label">Formación Académica</label>
                     <div class="col-sm-8">
-                        <select class="form-select" name="FORMACION_ACADEMICA">
+                        <select class="form-select" name="formacion_academica">
                             <option selected="selected" value="N/A" type="text">N/A</option>
                             <option value="SECUNDARIA" type="text">SECUNDARIA</option>
                             <option value="BACHILLERATO" type="text">BACHILLERATO</option>
@@ -66,37 +66,35 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="programacion_evaluacion" class="col-sm-4 col-form-label">Eval. Psicológica</label>
+                    <label for="f_evaluacion_psic" class="col-sm-4 col-form-label">Eval. Psicológica</label>
                     <div class="col-sm-4">
-                      <input type="date" name="programacion_evaluacion" placeholder="Fecha de programación" class="form-control" id="programacion_evaluacion">
+                      <input type="date" name="f_evaluacion_psic" placeholder="Fecha de programación" class="form-control" id="f_evaluacion_psic">
                     </div>
                     <div class="col-sm-4">
-                      <select class="form-select" id="horario" name="HORARIO_ESCALONADO">
-                        <option value="8:00:00 a.m." type="text" >8:00:00 hrs</option>
+                      <select class="form-select" id="horario" name="programacion_evaluacion">
+                        <option selected="selected" value="8:00:00 a.m." type="text" >8:00:00 hrs</option>
                         <option value="12:00:00 p.m." type="text">12:00:00 hrs</option>
                         <option value="16.00:00 hrs." type="text">16.00:00 hrs</option>
-                        <option selected="selected" value="" type="text">PENDIENTE DE CONFIRMAR</option>
                       </select>
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="programacion_evaluacion_pol" class="col-sm-4 col-form-label">Eval. Poligráfica</label>
+                    <label for="f_evaluacion_piro" class="col-sm-4 col-form-label">Eval. Poligráfica</label>
                     <div class="col-sm-4">
-                      <input type="date" name="programacion_evaluacion_pol" placeholder="Fecha de programación" class="form-control" id="programacion_evaluacion_pol">
+                      <input type="date" name="f_evaluacion_piro" placeholder="Fecha de programación" class="form-control" id="f_evaluacion_piro">
                     </div>
                     <div class="col-sm-4">
                       <select class="form-select" id="horario2" name="HORARIO_ESCALONADO">
-                        <option value="8:00:00 a.m." type="text" >8:00:00 hrs</option>
+                        <option selected="selected" value="8:00:00 a.m." type="text" >8:00:00 hrs</option>
                         <option value="12:00:00 p.m." type="text">12:00:00 hrs</option>
                         <option value="16.00:00 hrs." type="text">16.00:00 hrs</option>
-                        <option selected="selected" value="" type="text">PENDIENTE DE CONFIRMAR</option>
                       </select>
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="locacion_evaluacion" class="col-sm-4 col-form-label">Locación de Evaluación</label>
+                    <label for="localizacion_eval" class="col-sm-4 col-form-label">Localización de Evaluación</label>
                     <div class="col-sm-8">
-                        <input id="locacion_evaluacion" oninput="mostrarSinDiacriticos(this)" type="text" name="locacion_evaluacion" placeholder="Locación de Evaluación" class="form-control">
+                        <input id="localizacion_eval" oninput="mostrarSinDiacriticos(this)" type="text" name="localizacion_eval" placeholder="Localización de Evaluación" class="form-control">
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -105,7 +103,7 @@
                             <i class="fa fa-plus" aria-hidden="true"></i>
                             Crear
                         </BUtton>
-                        <a class="edit btn btn-outline-danger" href="/">Cancelar</a>
+                        <a class="edit btn btn-outline-danger" href="/evaluacionesSSE">Cancelar</a>
                     </div>
                 </div>
             </form>

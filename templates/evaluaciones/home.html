@@ -1,0 +1,75 @@
+{% extends "base_template.html" %}
+{% block title %}EVALUACIONES SSE{% endblock %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="row my-4">
+        <div class="col-md-9">
+            <a href="/addCandidato" class="btn btn-success w-100"><i class="fa fa-plus"></i> Agregar nuevo</a>
+        </div>
+        <div class="col-md-3">
+            <a href="/downloadEval" download class="btn btn-primary w-100"><i class="fa fa-file-excel-o"></i> Descargar</a>
+        </div>
+    </div>
+    <div class="container">
+        <table id="data" class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>ID BT</th>
+                <th>Motivo de Evaluación</th>
+                <th>Puesto</th>
+                <th>Centro de Trabajo</th>
+                <th>Eval. Psicológica</th>
+                <th>Eval. Poligráfica</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+          var table = $('#data').DataTable({
+              ajax: '/api/data_evaluaciones',
+              language: {
+            "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"},
+              columns: [
+                  {data: 'nombre', searchable: true},
+                  {data: 'id_bt'},
+                  {data: 'motivo_evaluacion'},
+                  {data: 'puesto'},
+                  {data: 'centro_trabajo'},
+                  {data: 'f_evaluacion_psic'},
+                  {data: 'f_evaluacion_piro'},
+                  {defaultContent: '<a class="edit btn btn-warning" value="Editar"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a class="delete btn btn-danger" value="Borrar"><i class="fa fa-trash" aria-hidden="true"></i></a>'}
+              ],
+          });
+          $('#data tbody').on('click', '.edit', function () {
+              var row = $(this).closest('tr');
+              var id = table.row(row).data().id;
+              var data = table.row( row ).data().nombre;
+              window.location.href = "evaluaciones/editReg/" + id;
+            });
+
+
+            $('#data tbody').on('click', '.delete', function () {
+              var row = $(this).closest('tr');
+              var id = table.row(row).data().id;
+              var data = table.row( row ).data().edad;
+              window.location.href = "evaluaciones/deleteReg/" + id;
+            });
+        });
+    </script>
+{% endblock %}
