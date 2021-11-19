@@ -48,7 +48,7 @@ class Candidato(db.Model):
             'puesto': self.puesto,
             'centro_trabajo': self.centro_trabajo,
             'estado_civil': self.estado_civil,
-            'f_evaluacion_psic': self.f_evaluacion_psic,
-            'f_evaluacion_piro': self.f_evaluacion_piro,
+            'f_evaluacion_psic': fecha1,
+            'f_evaluacion_piro': fecha2,
             'localizacion_eval': self.localizacion_eval
         }

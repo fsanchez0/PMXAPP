@@ -60,7 +60,7 @@
               var row = $(this).closest('tr');
               var id = table.row(row).data().id;
               var data = table.row( row ).data().nombre;
-              window.location.href = "evaluaciones/editReg/" + id;
+              window.location.href = "/editCandidato/" + id;
             });
 
 
@@ -68,7 +68,7 @@
               var row = $(this).closest('tr');
               var id = table.row(row).data().id;
               var data = table.row( row ).data().edad;
-              window.location.href = "evaluaciones/deleteReg/" + id;
+              window.location.href = "/deleteCandidato/" + id;
             });
         });
     </script>

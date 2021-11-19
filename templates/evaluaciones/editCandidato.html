@@ -1,0 +1,113 @@
+{% extends 'base_template.html' %}
+{% block content %}
+<div class="card card-body">
+     <div class="col-md-6 offset-md-3">
+            <form action="/updateCandidato/{{reg.id}}" method="POST">
+                <div class="row mb-3">
+                    <label for="nombre" class="col-sm-4 col-form-label" >Nombre</label>
+                    <div class="col-sm-8">
+                        <input value="{{ reg.nombre }}" id="nombre" oninput="mostrarSinDiacriticos(this)" type="text" name="nombre" placeholder="Nombre" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="edad" class="col-sm-4 col-form-label">Edad</label>
+                    <div class="col-sm-8">
+                        <input type="number" name="edad" value="{{ reg.edad }}" placeholder="Edad" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="id_bt" class="col-sm-4 col-form-label">ID BT</label>
+                    <div class="col-sm-8">
+                        <input type="number" name="id_bt" placeholder="ID BT" value="{{ reg.id_bt }}" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="motivo_evaluacion" class="col-sm-4 col-form-label">Motivo de Evaluación</label>
+                    <div class="col-sm-8">
+                      <select class="form-select" name="motivo_evaluacion">
+                        <option selected="selected" value="{{ reg.motivo_evaluacion }}" type="text">{{ reg.motivo_evaluacion }}</option>
+                        <option value="NUEVO INGRESO" type="text" >NUEVO INGRESO</option>
+                        <option value="ACTUALIZACIÓN DE LICENCIA" type="text">ACTUALIZACIÓN DE LICENCIA</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="formacion_academica" class="col-sm-4 col-form-label">Formación Académica</label>
+                    <div class="col-sm-8">
+                        <select class="form-select" name="formacion_academica">
+                            <option selected="selected" value="{{ reg.formacion_academica }}" type="text">{{ reg.formacion_academica }}</option>
+                            <option value="SECUNDARIA" type="text">SECUNDARIA</option>
+                            <option value="BACHILLERATO" type="text">BACHILLERATO</option>
+                            <option value="LICENCIATURA" type="text">UNIVERSIDAD</option>
+                            <option value="POSGRADO" type="text">MAESTRÍA</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="puesto" class="col-sm-4 col-form-label">Puesto</label>
+                    <div class="col-sm-8">
+                        <input id="puesto" oninput="mostrarSinDiacriticos(this)" type="text" name="puesto" placeholder="Puesto" value="{{ reg.puesto }}" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="centro_trabajo" class="col-sm-4 col-form-label">Centro de Trabajo</label>
+                    <div class="col-sm-8">
+                        <input id="centro_trabajo" oninput="mostrarSinDiacriticos(this)" type="text" name="centro_trabajo" value="{{ reg.centro_trabajo }}" placeholder="Centro de Trabajo" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                <label for="estado_civil" class="col-sm-4 col-form-label">Estado Civil</label>
+                    <div class="col-sm-8">
+                      <select class="form-select" id="estado_civil" name="estado_civil">
+                        <option value="SOLTERO" type="text" >SOLTERO</option>
+                        <option value="CASADO" type="text">CASADO</option>
+                        <option selected="selected" value="{{ reg.estado_civil }}" type="text">{{ reg.estado_civil }}</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="f_evaluacion_psic" class="col-sm-4 col-form-label">Eval. Psicológica</label>
+                    <div class="col-sm-4">
+                      <input type="date" name="f_evaluacion_psic" placeholder="Fecha de programación" class="form-control" id="f_evaluacion_psic" value="{{ reg.f_evaluacion_psic }}">
+                    </div>
+                    <div class="col-sm-4">
+                      <select class="form-select" id="horario" name="programacion_evaluacion">
+                        <option selected="selected" value="8:00:00 a.m." type="text" >8:00:00 hrs</option>
+                        <option value="12:00:00 p.m." type="text">12:00:00 hrs</option>
+                        <option value="16.00:00 hrs." type="text">16.00:00 hrs</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="f_evaluacion_piro" class="col-sm-4 col-form-label">Eval. Poligráfica</label>
+                    <div class="col-sm-4">
+                      <input type="date" name="f_evaluacion_piro" placeholder="Fecha de programación" class="form-control" id="f_evaluacion_piro" value="{{ reg.f_evaluacion_piro }}">
+                    </div>
+                    <div class="col-sm-4">
+                      <select class="form-select" id="horario2" name="HORARIO_ESCALONADO">
+                        <option selected="selected" value="8:00:00 a.m." type="text" >8:00:00 hrs</option>
+                        <option value="12:00:00 p.m." type="text">12:00:00 hrs</option>
+                        <option value="16.00:00 hrs." type="text">16.00:00 hrs</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="localizacion_eval" class="col-sm-4 col-form-label">Localización de Evaluación</label>
+                    <div class="col-sm-8">
+                        <input id="localizacion_eval" oninput="mostrarSinDiacriticos(this)" type="text" name="localizacion_eval" placeholder="Localización de Evaluación" class="form-control" value="{{ reg.localizacion_eval }}">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="form-group my-2">
+                        <BUtton type="submit" class="btn btn-primary">
+                             <i class="fa fa-save" aria-hidden="true"></i>
+                            Guardar
+                        </BUtton>
+                        <a class="edit btn btn-outline-danger" href="/evaluacionesSSE">Cancelar</a>
+                    </div>
+                </div>
+            </form>
+    </div>
+</div>
+
+{% endblock %}

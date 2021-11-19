@@ -92,7 +92,48 @@ def add_candidato():
             except Exception as e:
                 flash('Falló al agregar: ', e)
                 print(e)
-        return redirect(url_for('home'))
+        return redirect(url_for('evaluaciones'))
+
+
+@app.route('/editCandidato/<id>')
+def get_candidato(id):
+    candidato = Candidato.query.filter_by(id=id).first()
+    return render_template('evaluaciones/editCandidato.html', reg=candidato, title='Editar Registro')
+
+
+@app.route('/updateCandidato/<id>', methods=['POST'])
+def updateCandidato(id):
+    print("Voy a actualizar: ", Candidato.query.filter_by(id=id).first())
+    if request.method == 'POST':
+        try:
+            candidato = Candidato.query.filter_by(id=id).first()
+            if candidato is not None:
+                candidato.nombre = request.form['nombre']
+                candidato.edad = request.form['edad']
+                candidato.id_bt = request.form['id_bt']
+                candidato.motivo_evaluacion = request.form['motivo_evaluacion']
+                candidato.formacion_academica = request.form['formacion_academica']
+                candidato.puesto = request.form['puesto']
+                candidato.centro_trabajo = request.form['centro_trabajo']
+                candidato.estado_civil = request.form['estado_civil']
+                candidato.f_evaluacion_psic = request.form['f_evaluacion_psic']
+                candidato.f_evaluacion_piro = request.form['f_evaluacion_piro']
+                candidato.localizacion_eval = request.form['localizacion_eval']
+                db.session.commit()
+                flash('Actualizado con éxito')
+        except Exception as e:
+            flash('Falló al actualizar: ', e)
+            print(e)
+    return redirect(url_for('evaluaciones'))
+
+
+@app.route('/deleteCandidato/<id>')
+def delete_candidato(id):
+    flash('Usuario borrado exitosamente')
+    candidato = Candidato.query.filter_by(id=id).first()
+    db.session.delete(candidato)
+    db.session.commit()
+    return redirect(url_for('evaluaciones'))
 
 
 @login_manager.user_loader

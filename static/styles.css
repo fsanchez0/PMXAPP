@@ -58,3 +58,165 @@ footer{
     color: #9d2449;
     font-size: 15vh;
   }
+
+/********************** l o g i n *********************/
+.page-bg {
+	height: 100%;
+	position: fixed;
+	width: 100%;
+	background: #F1F1F0 url(torre_pemex.jpg) no-repeat scroll center top;
+	background-size: cover;
+	min-height: 100%;
+	min-width: 100%;
+}
+
+.new-box{
+	background-color: rgba(255,255,255,0.6);
+	box-shadow: 10px 10px 20px #000;
+	border-radius: 15px;
+	max-width: 370px;
+}
+
+p,b{
+	color: #808080;
+}
+input {
+	display: block;
+	margin: auto auto;
+	width: 100%;
+	margin-bottom: 2em;
+	padding: .5em 0;
+	border: none;
+	border-bottom: 1px solid #eaeaea;
+	padding-bottom: 1.25em;
+	color: #757575;
+	font-size: 16px;
+}
+input:focus {
+	outline: none;
+}
+
+.buttonLogin{
+	transition-duration: 0.4s;
+}
+.buttonLogin:hover, .buttonLogin:focus {
+	background-color: #13da44;
+}
+
+.button-block {
+	display:block;
+	width:100%;
+}
+
+.forgot {
+	color: lighten(#4da26f, 10%);
+	line-height: .5em;
+	position: relative;
+	top: 2.5em;
+	text-decoration: none;
+	font-size: .75em;
+	margin:0;
+	padding: 0;
+	float: right;
+}
+
+h1{
+	font-size:25px;
+	text-align: left;
+	text-transform:capitalize;
+}
+.service-box{
+	position: relative;
+	overflow: hidden;
+	margin-bottom:10px;
+	perspective:1000px;
+	-webkit-perspective:1000px;
+}
+.service-box a:hover{
+	color: #fff;
+	text-decoration: none;
+}
+
+.service-icon{
+	width: 100%;
+	height: 220px;
+	padding: 20px;
+	text-align: center;
+	transition: all .5s ease;
+}
+
+.service-content{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	opacity: 0;
+	width: 100%;
+	height: 220px;
+	padding: 20px;
+	text-align: center;
+	transition: all .5s ease;
+	background-color: #474747;
+	backface-visibility:hidden;
+	transform-style: preserve-3d;
+	-webkit-transform: translateY(110px) rotateX(-90deg);
+	-moz-transform: translateY(110px) rotateX(-90deg);
+	-ms-transform: translateY(110px) rotateX(-90deg);
+	-o-transform: translateY(110px) rotateX(-90deg);
+	transform: translateY(110px) rotateX(-90deg);
+}
+.service-box .service-icon .front-content{
+	position: relative;
+	top:80px;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.service-box .service-icon .front-content i {
+	font-size: 28px;
+	color: #fff;
+	font-weight: normal;
+}
+
+.service-box .service-icon .front-content h3 {
+	font-size: 15px;
+	color: #fff;
+	text-align: center;
+	margin-bottom: 15px;
+	text-transform: uppercase;
+}
+.service-box .service-content h3 {
+	font-size: 15px;
+	font-weight: 700;
+	color: #fff;
+	margin-bottom:10px;
+	text-transform: uppercase;
+}
+.service-box .service-content p {
+	font-size: 13px;
+	color: #b1b1b1;
+	margin:0;
+}
+.verde_pmx{background-color: rgb(40, 92, 77);}
+.rojo_pmx{background-color: rgb(157, 36, 73);}
+.red{background-color: #e84b3a;}
+.grey{background-color: #474747;}
+.service-box:hover .service-icon{
+	opacity: 0;
+	-webkit-transform: translateY(-110px) rotateX(90deg);
+	-moz-transform: translateY(-110px) rotateX(90deg);
+	-ms-transform: translateY(-110px) rotateX(90deg);
+	-o-transform: translateY(-110px) rotateX(90deg);
+	transform: translateY(-110px) rotateX(90deg);
+}
+.service-box:hover .service-content {
+	opacity: 1;
+	-webkit-transform: rotateX(0);
+	-moz-transform: rotateX(0);
+	-ms-transform: rotateX(0);
+	-o-transform: rotateX(0);
+	transform: rotateX(0);
+}
