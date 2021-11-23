@@ -1,5 +1,5 @@
 from flask_login import LoginManager, login_manager, current_user, login_user, login_required, logout_user
-from flask import Flask, render_template, redirect, url_for, request, flash
+from flask import Flask, render_template, redirect, url_for, request, flash, send_file
 from sqlalchemy.ext.declarative import declarative_base
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import sessionmaker
@@ -7,6 +7,10 @@ from sqlalchemy import create_engine
 from werkzeug.urls import url_parse
 from forms import LoginForm, SignupForm
 from waitress import serve
+from io import BytesIO
+import pandas as pd
+import xlsxwriter
+import pymssql
 import os
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
@@ -83,8 +87,8 @@ def add_candidato():
                 candidato.puesto = request.form['puesto']
                 candidato.centro_trabajo = request.form['centro_trabajo']
                 candidato.estado_civil = request.form['estado_civil']
-                candidato.f_evaluacion_psic = request.form['f_evaluacion_psic']
-                candidato.f_evaluacion_piro = request.form['f_evaluacion_piro']
+                candidato.f_evaluacion_psic = request.form['f_evaluacion_psic'] + ' ' + request.form['hora_evaluacion_psic']
+                candidato.f_evaluacion_piro = request.form['f_evaluacion_piro'] + ' ' + request.form['hora_evaluacion_piro']
                 candidato.localizacion_eval = request.form['localizacion_eval']
                 db.session.add(candidato)
                 db.session.commit()
@@ -136,6 +140,28 @@ def delete_candidato(id):
     return redirect(url_for('evaluaciones'))
 
 
+@app.route('/downloadEval')
+def downloadEval():
+    g_connect = pymssql.connect('vwtutsqlp065.un.pemex.com', 'sapp', 'Pemex.2020*', 'PEMEX')
+    sql_query = pd.read_sql_query('''SELECT * FROM tb_candidato''', g_connect)
+    # create a random Pandas dataframe
+    df = pd.DataFrame(sql_query)
+    df["f_evaluacion_psic"] = df["f_evaluacion_psic"].dt.strftime("%d/%m/%Y")
+    df["f_evaluacion_piro"] = df["f_evaluacion_piro"].dt.strftime("%d/%m/%Y")
+    # create an output stream
+    output = BytesIO()
+    writer = pd.ExcelWriter(output, engine='xlsxwriter')
+
+    df.to_excel(writer, startrow=0, merge_cells=False, sheet_name="Candidatos", index=False)
+    workBook = writer.book
+    workSheet = writer.sheets["Candidatos"]
+    # the writer has done its job
+    writer.close()
+    # go back to the beginning of the stream
+    output.seek(0)
+    return send_file(output, attachment_filename="Candidatos.xlsx", as_attachment=True)
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return Usuario.get_by_id(int(user_id))
@@ -155,6 +181,11 @@ def login():
                 next_page = url_for('home')
             return redirect(next_page)
     return render_template('login_form.html', form=form)
+
+
+@login_manager.unauthorized_handler
+def unauthorized_callback():
+    return redirect('/login?next=' + request.path)
 
 
 @app.route('/logout')

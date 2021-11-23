@@ -34,9 +34,9 @@ class Candidato(db.Model):
         fecha1 = self.f_evaluacion_psic
         fecha2 = self.f_evaluacion_piro
         if(self.f_evaluacion_psic is not None):
-            fecha1 = self.f_evaluacion_psic.strftime("%d/%m/%Y")
+            fecha1 = self.f_evaluacion_psic.strftime("%d/%m/%Y %H:%M")
         if (self.f_evaluacion_piro is not None):
-            fecha2 = self.f_evaluacion_piro.strftime("%d/%m/%Y")
+            fecha2 = self.f_evaluacion_piro.strftime("%d/%m/%Y %H:%M")
 
         return {
             'id': self.id,
