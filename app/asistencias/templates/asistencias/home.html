@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="row my-4">
+        <div class="col-md-9">
+            <a href="/addReg" class="btn btn-success w-100"><i class="fa fa-plus"></i> Agregar nuevo</a>
+        </div>
+        <div class="col-md-3">
+            <a href="/download" download class="btn btn-primary w-100"><i class="fa fa-file-excel-o"></i> Descargar</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <table id="data" class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Celular</th>
+                <th>Correo Electrónico</th>
+                <th>ID BT</th>
+                <th>Categoría</th>
+                <th>Fecha Programación</th>
+                <th>Hora Programación</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script>
+
+    </script>
+{% endblock %}

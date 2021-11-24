@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card card-body">
+     <div class="col-md-6 offset-md-3">
+            <form action="/addReg" method="POST">
+                <div class="row mb-3">
+                    <label for="nombre" class="col-sm-4 col-form-label" >Nombre</label>
+                    <div class="col-sm-8">
+                        <input id="nombre" oninput="mostrarSinDiacriticos(this)" type="text" name="NOMBRE" placeholder="Nombre" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="edad" class="col-sm-4 col-form-label">Edad</label>
+                    <div class="col-sm-8">
+                        <input type="number" name="EDAD" placeholder="Edad" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="telefono" class="col-sm-4 col-form-label">Teléfono</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="TELEFONO" placeholder="Telefono" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="telefono_movil" class="col-sm-4 col-form-label">Teléfono Móvil</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="TELEFONO_MOVIL" placeholder="Celular" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="correo" class="col-sm-4 col-form-label">Correo</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="CORREO" placeholder="Correo Electrónico" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="formacion_academica" class="col-sm-4 col-form-label">Formación Académica</label>
+                    <div class="col-sm-8">
+                        <select class="form-select" name="FORMACION_ACADEMICA">
+                            <option selected="selected" value="N/A" type="text">N/A</option>
+                            <option value="PRIMARIA" type="text" >PRIMARIA</option>
+                            <option value="SECUNDARIA" type="text">SECUNDARIA</option>
+                            <option value="BACHILLERATO" type="text">BACHILLERATO</option>
+                            <option value="UNIVERSIDAD" type="text">UNIVERSIDAD</option>
+                            <option value="MAESTRIA" type="text">MAESTRÍA</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="categoria_propuestos" class="col-sm-4 col-form-label">Categoría Propuestos</label>
+                    <div class="col-sm-8">
+                      <select class="form-select" name="CATEGORIA_PROPUESTOS">
+                        <option selected="selected" value="N/A" type="text">N/A</option>
+                        <option value="CHOFER" type="text" >CHOFER</option>
+                        <option value="AYUDANTE" type="text">AYUDANTE</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="origen" class="col-sm-4 col-form-label">Origen</label>
+                    <div class="col-sm-8">
+                        <input id="origen" oninput="mostrarSinDiacriticos(this)" type="text" name="ORIGEN" placeholder="Origen" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                        <label for="f_programacion" class="col-sm-4 col-form-label">Fecha de Programación</label>
+                        <div class="col-sm-8">
+                          <input type="date" name="F_PROGRAMACION" placeholder="Fecha de programación" class="form-control" id="f_programacion">
+                        </div>
+                </div>
+                <div class="row mb-3">
+                <label for="responsable" class="col-sm-4 col-form-label">Responsable</label>
+                    <div class="col-sm-8">
+                      <select class="form-select" id="responsable" name="RESPONSABLE">
+                        <option selected="selected" value="N/A" type="text">N/A</option>
+                        <option value="ALEJANDRO PABLO CHÁVEZ" type="text" >ALEJANDRO PABLO CHÁVEZ</option>
+                        <option value="ARLETTE ARVIZU RICO" type="text" >ARLETTE ARVIZU RICO</option>
+                        <option value="ARTURO ENRIQUE VILLAR" type="text" >ARTURO ENRIQUE VILLAR</option>
+                        <option value="BRENDA CARMONA" type="text" >BRENDA CARMONA</option>
+                        <option value="CLAUDIA OLIVIA ROSAS" type="text" >CLAUDIA OLIVIA ROSAS</option>
+                        <option value="CLAUDIA PULIDO" type="text" >CLAUDIA PULIDO</option>
+                        <option value="DANIEL SAUCEDO" type="text" >DANIEL SAUCEDO</option>
+                        <option value="ERIKA MARÍA CARPY" type="text" >ERIKA MARÍA CARPY</option>
+                        <option value="ETNA SÁNCHEZ" type="text" >ETNA SÁNCHEZ</option>
+                        <option value="FABIOLA CÁRDENAS" type="text" >FABIOLA CÁRDENAS</option>
+                        <option value="FERNANDO MONTES DE OCA" type="text" >FERNANDO MONTES DE OCA</option>
+                        <option value="GEMA HERRERA" type="text" >GEMA HERRERA</option>
+                        <option value="GUADALUPE JIMÉNEZ" type="text" >GUADALUPE JIMÉNEZ</option>
+                        <option value="JAIME MORALES" type="text" >JAIME MORALES</option>
+                        <option value="JESÚS GARCÍA SÁNCHEZ" type="text" >JESÚS GARCÍA SÁNCHEZ</option>
+                        <option value="KARLA LÓPEZ CORTES" type="text" >KARLA LÓPEZ CORTES</option>
+                        <option value="MARIA ESTHER" type="text" >MARIA ESTHER</option>
+                        <option value="MÓNICA JUDITH CHAO" type="text" >MÓNICA JUDITH CHAO</option>
+                        <option value="PAMELA SEGOVIA" type="text" >PAMELA SEGOVIA</option>
+                        <option value="PRISCILA ÁLVAREZ ROMERO" type="text" >PRISCILA ÁLVAREZ ROMERO</option>
+                        <option value="QUETZALLI ENEDELIA" type="text" >QUETZALLI ENEDELIA</option>
+                        <option value="CANTO" type="text" >CANTO</option>
+                        <option value="RAÚL" type="text" >RAÚL</option>
+                        <option value="SECRE MEX GAS" type="text" >SECRE MEX GAS</option>
+                        <option value="VANIA ANAHÍ MORENO" type="text" >VANIA ANAHÍ MORENO</option>
+                        <option value="OTRO" type="text">OTRO</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                        <label for="horario" class="col-sm-4 col-form-label">Horario Escalonado</label>
+                        <div class="col-sm-8">
+                          <select class="form-select" id="horario" name="HORARIO_ESCALONADO">
+                            <option value="8:00:00 a.m." type="text" >8:00:00 a.m.</option>
+                            <option value="10:00:00 a.m." type="text">10:00:00 a.m.</option>
+                            <option value="12:00:00 p.m." type="text">12:00:00 p.m.</option>
+                            <option value="14:00:00 hrs." type="text">14:00:00 hrs.</option>
+                            <option value="16.00:00 hrs." type="text">16.00:00 hrs.</option>
+                            <option selected="selected" value="" type="text">PENDIENTE DE CONFIRMAR</option>
+                          </select>
+                        </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="id_bt" class="col-sm-4 col-form-label">ID BT</label>
+                    <div class="col-sm-8">
+                        <input type="number" name="ID_BT" placeholder="ID BT" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="tipo_licencia" class="col-sm-4 col-form-label">Tipo de Licencia</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="TIPO_LICENCIA" placeholder="Tipo de Licencia" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="obs" class="col-sm-4 col-form-label">OBS</label>
+                    <div class="col-sm-8">
+                        <input id="obs" oninput="mostrarSinDiacriticos(this)" type="text" name="OBS" placeholder="OBS" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="prueba_manejo" class="col-sm-4 col-form-label">Prueba de Manejo</label>
+                    <div class="col-sm-8">
+                      <select class="form-select" id="prueba_manejo" name="PRUEBA_MANEJO">
+                        <option value="OK" type="text" >OK</option>
+                        <option selected="selected" value="N/A" type="text">N/A</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                <label for="apto" class="col-sm-4 col-form-label">Apto</label>
+                    <div class="col-sm-8">
+                      <select class="form-select" id="apto" name="APTO">
+                        <option value="APTO" type="text" >APTO</option>
+                        <option value="NO APTO" type="text">NO APTO</option>
+                        <option selected="selected" value="N/A" type="text">N/A</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="mmpi" class="col-sm-4 col-form-label">MMPI</label>
+                    <div class="col-sm-8">
+                      <select class="form-select" id="mmpi" name="MMPI">
+                        <option value="Sí" type="text" >Sí</option>
+                        <option selected="selected" value="N/A" type="text">N/A</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="resultado_mmpi" class="col-sm-4 col-form-label">Resultado MMPI</label>
+                        <div class="col-sm-8">
+                          <select class="form-select" id="resultado_mmpi" name="RESULTADO_MMPI">
+                            <option value="R" type="text" >R</option>
+                            <option value="R+" type="text" >R+</option>
+                            <option value="NR" type="text" >NR</option>
+                            <option value="FALTA RESULTADO" type="text" >FALTA RESULTADO</option>
+                            <option value="INVÁLIDA" type="text" >INVÁLIDA</option>
+                            <option selected="selected" value="N/A" type="text">N/A</option>
+                          </select>
+                        </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="capacitacion_seguridad" class="col-sm-4 col-form-label">Capacitación Seguridad</label>
+                    <div class="col-sm-8">
+                        <input id="capac" oninput="mostrarSinDiacriticos(this)" type="text" name="CAPACITACION_SEGURIDAD" placeholder="Capacitación de Seguridad" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="documentacion" class="col-sm-4 col-form-label">Documentación</label>
+                    <div class="col-sm-8">
+                        <input id="docum" oninput="mostrarSinDiacriticos(this)" type="text" name="DOCUMENTACION" placeholder="Documentación" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="form-group my-2">
+                        <BUtton type="submit" class="btn btn-success btn-block">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            Crear
+                        </BUtton>
+                        <a class="edit btn btn-outline-danger" href="/">Cancelar</a>
+                    </div>
+                </div>
+            </form>
+    </div>
+</div>
+
+{% endblock %}
