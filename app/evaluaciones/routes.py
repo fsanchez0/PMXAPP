@@ -1,10 +1,11 @@
-from flask import render_template, request, flash, redirect, url_for, send_file
+from flask import render_template, request, flash, redirect, url_for, send_file, make_response
 from flask_login import login_required, current_user
 from io import BytesIO
 import pandas as pd
 import pymssql
+import pdfkit
 
-
+config = pdfkit.configuration(wkhtmltopdf="C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe")
 from app.models import Candidato
 from app import db
 from . import evaluaciones_bp
@@ -118,3 +119,16 @@ def downloadEval():
     # go back to the beginning of the stream
     output.seek(0)
     return send_file(output, attachment_filename="Candidatos.xlsx", as_attachment=True)
+
+
+@evaluaciones_bp.route('/downloadReport')
+def downloadReport():
+    rendered = render_template('evaluaciones/pdf_template.html')
+    pdf = pdfkit.from_string(rendered, False)
+    #https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf
+    #https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/
+    response = make_response(pdf)
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = 'attachement; filename=output.pdf'
+
+    return response
