@@ -1,10 +1,10 @@
 .nav-link:hover{
     color: #d4c19c!important;
 }
-
+/*
 footer{
     background-color: #12322b;
-    position: absolute;
+    position: inherit;
     right: 0;
     bottom: 0;
     left: 0;
@@ -16,7 +16,7 @@ footer{
     background-color: #12322b;
     background-repeat: repeat-x;
 }
-
+*/
 .big-button {
     border-radius: 10%;
     width: 300px;

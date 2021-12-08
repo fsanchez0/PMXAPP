@@ -132,3 +132,17 @@ def downloadReport():
     response.headers['Content-Disposition'] = 'attachement; filename=output.pdf'
 
     return response
+
+
+@evaluaciones_bp.route('/downloadReport2')
+def downloadReport2():
+    rendered = render_template('evaluaciones/pdf_template2.html')
+    pdf = pdfkit.from_string(rendered, False)
+    #https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf
+    #https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/
+    response = make_response(pdf)
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = 'attachement; filename=output.pdf'
+
+    return response
+
