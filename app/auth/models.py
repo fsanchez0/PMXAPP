@@ -26,6 +26,9 @@ class Usuario(db.Model, UserMixin):
             db.session.add(self)
         db.session.commit()
 
+    def es_admin(self):
+        return self.is_admin
+
     @staticmethod
     def get_by_id(id):
         return Usuario.query.get(id)

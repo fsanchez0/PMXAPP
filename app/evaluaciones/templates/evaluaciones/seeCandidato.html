@@ -6,103 +6,67 @@
                 <div class="row mb-3">
                     <label for="nombre" class="col-sm-4 col-form-label" >Nombre</label>
                     <div class="col-sm-8">
-                        <input value="{{ reg.nombre }}" id="nombre" oninput="mostrarSinDiacriticos(this)" type="text" name="nombre" placeholder="Nombre" class="form-control">
+                        <input value="{{ reg.nombre }}" id="nombre" oninput="mostrarSinDiacriticos(this)" type="text" name="nombre" placeholder="Nombre" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="edad" class="col-sm-4 col-form-label">Edad</label>
                     <div class="col-sm-8">
-                        <input type="number" name="edad" value="{{ reg.edad }}" placeholder="Edad" class="form-control">
+                        <input type="number" name="edad" value="{{ reg.edad }}" placeholder="Edad" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="id_bt" class="col-sm-4 col-form-label">ID BT</label>
                     <div class="col-sm-8">
-                        <input type="number" name="id_bt" placeholder="ID BT" value="{{ reg.id_bt }}" class="form-control">
+                        <input type="number" name="id_bt" placeholder="ID BT" value="{{ reg.id_bt }}" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="motivo_evaluacion" class="col-sm-4 col-form-label">Motivo de Evaluación</label>
                     <div class="col-sm-8">
-                      <select class="form-select" name="motivo_evaluacion">
-                        <option selected="selected" value="{{ reg.motivo_evaluacion }}" type="text">{{ reg.motivo_evaluacion }}</option>
-                        <option value="NUEVO INGRESO" type="text" >NUEVO INGRESO</option>
-                        <option value="ACTUALIZACIÓN DE LICENCIA" type="text">ACTUALIZACIÓN DE LICENCIA</option>
-                      </select>
+                        <input value="{{ reg.motivo_evaluacion }}" id="motivo_evaluacion" type="text" name="motivo_evaluacion" placeholder="Motivo de Evaluación" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="formacion_academica" class="col-sm-4 col-form-label">Formación Académica</label>
                     <div class="col-sm-8">
-                        <select class="form-select" name="formacion_academica">
-                            <option selected="selected" value="{{ reg.formacion_academica }}" type="text">{{ reg.formacion_academica }}</option>
-                            <option value="SECUNDARIA" type="text">SECUNDARIA</option>
-                            <option value="BACHILLERATO" type="text">BACHILLERATO</option>
-                            <option value="LICENCIATURA" type="text">UNIVERSIDAD</option>
-                            <option value="POSGRADO" type="text">MAESTRÍA</option>
-                          </select>
+                        <input value="{{ reg.formacion_academica }}" id="formacion_academica" type="text" name="formacion_academica" placeholder="Formación Académica" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="puesto" class="col-sm-4 col-form-label">Puesto</label>
                     <div class="col-sm-8">
-                        <input id="puesto" oninput="mostrarSinDiacriticos(this)" type="text" name="puesto" placeholder="Puesto" value="{{ reg.puesto }}" class="form-control">
+                        <input id="puesto" type="text" name="puesto" placeholder="Puesto" value="{{ reg.puesto }}" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="centro_trabajo" class="col-sm-4 col-form-label">Centro de Trabajo</label>
                     <div class="col-sm-8">
-                        <input id="centro_trabajo" oninput="mostrarSinDiacriticos(this)" type="text" name="centro_trabajo" value="{{ reg.centro_trabajo }}" placeholder="Centro de Trabajo" class="form-control">
+                        <input id="centro_trabajo" type="text" name="centro_trabajo" value="{{ reg.centro_trabajo }}" placeholder="Centro de Trabajo" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="row mb-3">
                 <label for="estado_civil" class="col-sm-4 col-form-label">Estado Civil</label>
                     <div class="col-sm-8">
-                      <select class="form-select" id="estado_civil" name="estado_civil">
-                        <option value="SOLTERO" type="text" >SOLTERO</option>
-                        <option value="CASADO" type="text">CASADO</option>
-                        <option selected="selected" value="{{ reg.estado_civil }}" type="text">{{ reg.estado_civil }}</option>
-                      </select>
+                        <input id="estado_civil" type="text" name="estado_civil" value="{{ reg.estado_civil }}" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="f_evaluacion_psic" class="col-sm-4 col-form-label">Eval. Psicológica</label>
-                    <div class="col-sm-4">
-                      <input type="date" name="f_evaluacion_psic" placeholder="Fecha de programación" class="form-control" id="f_evaluacion_psic" value={{reg.f_evaluacion_psic}}>
-                    </div>
-                    <div class="col-sm-4">
-                      <select class="form-select" id="hora_evaluacion_psic" name="hora_evaluacion_psic">
-                        <option selected="selected" value="08:00:00" type="text" >8:00 hrs</option>
-                        <option value="08:30:00" type="text">08:30 hrs</option>
-                        <option value="09:00:00" type="text">09:00 hrs</option>
-                        <option value="09:30:00" type="text">09:30 hrs</option>
-                        <option value="10:00:00" type="text">10:00 hrs</option>
-                        <option value="10:30:00" type="text">10:30 hrs</option>
-                        <option value="11:00:00" type="text">11:00 hrs</option>
-                        <option value="11:30:00" type="text">11:30 hrs</option>
-                        <option value="12:00:00" type="text">12:00 hrs</option>
-                        <option value="12:30:00" type="text">12:30 hrs</option>
-                        <option value="13:00:00" type="text">13:00 hrs</option>
-                      </select>
+                    <div class="col-sm-8">
+                      <input type="text" name="f_evaluacion_psic" placeholder="Fecha de programación" class="form-control" id="f_evaluacion_psic" value={{reg.f_evaluacion_psic}} readonly>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="f_evaluacion_piro" class="col-sm-4 col-form-label">Eval. Poligráfica</label>
-                    <div class="col-sm-4">
-                      <input type="date" name="f_evaluacion_piro" placeholder="Fecha de programación" class="form-control" id="f_evaluacion_piro" value={{ reg.f_evaluacion_piro }}>
-                    </div>
-                    <div class="col-sm-4">
-                      <select class="form-select" id="hora_evaluacion_piro" name="hora_evaluacion_piro">
-                        <option selected="selected" value="08:00:00" type="text" >8:00 hrs</option>
-                        <option value="12:00:00" type="text">12:00 hrs</option>
-                        <option value="16:00:00" type="text">16:00 hrs</option>
-                      </select>
+                    <div class="col-sm-8">
+                      <input type="text" name="f_evaluacion_piro" placeholder="Fecha de programación" class="form-control" id="f_evaluacion_piro" value={{ reg.f_evaluacion_piro }} readonly>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="localizacion_eval" class="col-sm-4 col-form-label">Localización de Evaluación</label>
                     <div class="col-sm-8">
-                        <input id="localizacion_eval" oninput="mostrarSinDiacriticos(this)" type="text" name="localizacion_eval" placeholder="Localización de Evaluación" class="form-control" value="{{ reg.localizacion_eval }}">
+                        <input id="localizacion_eval" oninput="mostrarSinDiacriticos(this)" type="text" name="localizacion_eval" placeholder="Localización de Evaluación" class="form-control" value="{{ reg.localizacion_eval }}" readonly>
                     </div>
                 </div>
                 {% if current_user.es_admin() %}
@@ -112,7 +76,7 @@
                     <div class="row mb-3">
                     <label for="fact_organicidad" class="col-sm-4 col-form-label">Organicidad</label>
                         <div class="col-sm-8">
-                          <select class="form-select" id="fact_organicidad" name="fact_organicidad">
+                          <select class="form-select" id="fact_organicidad" name="fact_organicidad" disabled>
                             <option value="1" type="text" >SIN SOSPECHA DE DAÑO ORGÁNICO</option>
                             <option value="0" type="text">SOSPECHA DE DAÑO ORGÁNICO</option>
                             <option selected="selected" value="{{ reg.fact_organicidad }}" type="text">
@@ -128,7 +92,7 @@
                     <div class="row mb-3">
                     <label for="fact_intelectual" class="col-sm-4 col-form-label">Capacidad Intelectual</label>
                         <div class="col-sm-8">
-                          <select class="form-select" id="fact_intelectual" name="fact_intelectual">
+                          <select class="form-select" id="fact_intelectual" name="fact_intelectual" disabled>
                             <option value="SUPERIOR" type="text" >SUPERIOR</option>
                             <option value="TÉRMINO MEDIO" type="text">TÉRMINO MEDIO</option>
                             <option value="INFERIOR" type="text">INFERIOR</option>
@@ -139,7 +103,7 @@
                     <div class="row mb-3">
                     <label for="fact_alerta" class="col-sm-4 col-form-label">Estado de Alerta</label>
                         <div class="col-sm-8">
-                          <select class="form-select" id="fact_alerta" name="fact_alerta">
+                          <select class="form-select" id="fact_alerta" name="fact_alerta" disabled>
                             <option value="ÓPTIMO" type="text" >ÓPTIMO</option>
                             <option value="ACEPTABLE" type="text">ACEPTABLE</option>
                             <option value="ALTERNADO" type="text">ALTERNADO</option>
@@ -150,7 +114,7 @@
                     <div class="row mb-3">
                     <label for="fact_animo" class="col-sm-4 col-form-label">Estado de Ánimo</label>
                         <div class="col-sm-8">
-                          <select class="form-select" id="fact_animo" name="fact_animo">
+                          <select class="form-select" id="fact_animo" name="fact_animo" disabled>
                             <option value="ÓPTIMO" type="text" >ÓPTIMO</option>
                             <option value="ACEPTABLE" type="text">ACEPTABLE</option>
                             <option value="ALTERNADO" type="text">ALTERNADO</option>
@@ -161,7 +125,7 @@
                     <div class="row mb-3">
                     <label for="fact_ansiedad" class="col-sm-4 col-form-label">Manejo de Ansiedad</label>
                         <div class="col-sm-8">
-                          <select class="form-select" id="fact_ansiedad" name="fact_ansiedad">
+                          <select class="form-select" id="fact_ansiedad" name="fact_ansiedad" disabled>
                             <option value="ÓPTIMO" type="text" >ÓPTIMO</option>
                             <option value="ACEPTABLE" type="text">ACEPTABLE</option>
                             <option value="ALTERNADO" type="text">ALTERNADO</option>
@@ -172,7 +136,7 @@
                     <div class="row mb-3">
                     <label for="fact_sensopercepcion" class="col-sm-4 col-form-label">Sensopercepción</label>
                         <div class="col-sm-8">
-                          <select class="form-select" id="fact_sensopercepcion" name="fact_sensopercepcion">
+                          <select class="form-select" id="fact_sensopercepcion" name="fact_sensopercepcion" disabled>
                             <option value="ÓPTIMO" type="text" >ÓPTIMO</option>
                             <option value="ACEPTABLE" type="text">ACEPTABLE</option>
                             <option value="ALTERNADO" type="text">ALTERNADO</option>
@@ -183,7 +147,7 @@
                     <div class="row mb-3">
                     <label for="fact_impulsos" class="col-sm-4 col-form-label">Control de Impulsos</label>
                         <div class="col-sm-8">
-                          <select class="form-select" id="fact_impulsos" name="fact_impulsos">
+                          <select class="form-select" id="fact_impulsos" name="fact_impulsos" disabled>
                             <option value="ÓPTIMO" type="text" >ÓPTIMO</option>
                             <option value="ACEPTABLE" type="text">ACEPTABLE</option>
                             <option value="ALTERNADO" type="text">ALTERNADO</option>
@@ -194,7 +158,7 @@
                     <div class="row mb-3">
                     <label for="fact_energia" class="col-sm-4 col-form-label">Nivel de Energía</label>
                         <div class="col-sm-8">
-                          <select class="form-select" id="fact_energia" name="fact_energia">
+                          <select class="form-select" id="fact_energia" name="fact_energia" disabled>
                             <option value="ÓPTIMO" type="text" >ÓPTIMO</option>
                             <option value="ACEPTABLE" type="text">ACEPTABLE</option>
                             <option value="ALTERNADO" type="text">ALTERNADO</option>
@@ -208,7 +172,7 @@
                     <div class="row mb-3">
                     <label for="apto" class="col-sm-4 col-form-label">Apto / No Apto</label>
                         <div class="col-sm-8">
-                          <select class="form-select" id="apto" name="apto">
+                          <select class="form-select" id="apto" name="apto" disabled>
                             <option value="1" type="text" >APTO</option>
                             <option value="0" type="text">NO APTO</option>
                             <option selected="selected" value="{{ reg.apto }}" type="text">
@@ -224,7 +188,7 @@
                     <div class="row mb-3">
                     <label for="resultado_psic" class="col-sm-4 col-form-label">Resultado Psicológico</label>
                         <div class="col-sm-8">
-                          <select class="form-select" id="resultado_psic" name="resultado_psic">
+                          <select class="form-select" id="resultado_psic" name="resultado_psic" disabled>
                             <option value="1" type="text" >R</option>
                             <option value="0" type="text">NR</option>
                             <option selected="selected" value="{{ reg.resultado_psic }}" type="text">
@@ -240,7 +204,7 @@
                     <div class="row mb-3">
                     <label for="resultado_polig" class="col-sm-4 col-form-label">Resultado Poligráfico</label>
                         <div class="col-sm-8">
-                          <select class="form-select" id="resultado_polig" name="resultado_polig">
+                          <select class="form-select" id="resultado_polig" name="resultado_polig" disabled>
                             <option value="1" type="text" >R</option>
                             <option value="0" type="text">NR</option>
                             <option selected="selected" value="{{ reg.resultado_polig }}" type="text">
@@ -254,13 +218,22 @@
                         </div>
                     </div>
                 {% endif %}
-                <div class="row mb-3">
-                    <div class="form-group my-2">
-                        <BUtton type="submit" class="btn btn-primary">
-                             <i class="fa fa-save" aria-hidden="true"></i>
-                            Guardar
-                        </BUtton>
-                        <a class="edit btn btn-outline-danger" href="/evaluacionesSSE">Cancelar</a>
+                <div class="row my-4">
+                    <div class="col-md-6">
+                        <a href="/downloadReport2/{{ reg.id }}" download class="btn btn-info w-100"><i class="fa fa-list-alt"></i> Descargar Resultados</a>
+                    </div>
+                    {% if reg.fact_organicidad and reg.apto and reg.resultado_psic and reg.resultado_polig %}
+                         <div class="col-md-6">
+                            <a href="/downloadReport/{{ reg.id }}" download class="btn btn-info w-100"><i class="fa fa-certificate"></i> Descargar Certificado</a>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="row my-4">
+                    <div class="col-md-6">
+                        <a class="edit btn btn-outline-danger w-100" href="/evaluacionesSSE"><i class="fa fa-arrow-left"></i> Regresar</a>
+                    </div>
+                    <div class="col-md-6">
+                        <a class="edit btn btn-warning w-100" href="/editCandidato/{{ reg.id }}"><i class="fa fa-pencil"></i> Editar</a>
                     </div>
                 </div>
             </form>

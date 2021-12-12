@@ -78,6 +78,21 @@ class Candidato(db.Model):
     f_evaluacion_piro = db.Column(db.DATETIME)  # Fecha y Hora
     localizacion_eval = db.Column(db.String(100))
     #motivo_evaluacion = db.Column(db.String(30))
+    ######     ADMIN
+    # Factores
+    fact_organicidad = db.Column(db.Boolean, default=False)
+    fact_intelectual = db.Column(db.String(15))
+    fact_alerta = db.Column(db.String(15))
+    fact_animo = db.Column(db.String(15))
+    fact_ansiedad = db.Column(db.String(15))
+    fact_sensopercepcion = db.Column(db.String(15))
+    fact_impulsos = db.Column(db.String(15))
+    fact_energia = db.Column(db.String(15))
+    # Resultados
+    apto = db.Column(db.Boolean, default=False)
+    resultado_psic = db.Column(db.Boolean, default=False)
+    resultado_polig = db.Column(db.Boolean, default=False)
+
 
     def __repr__(self):
         return "<Nombre: {}>".format(self.nombre)

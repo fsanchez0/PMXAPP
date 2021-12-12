@@ -82,12 +82,29 @@ def updateCandidato(id):
                 candidato.f_evaluacion_psic = request.form['f_evaluacion_psic'] + ' ' + request.form['hora_evaluacion_psic']
                 candidato.f_evaluacion_piro = request.form['f_evaluacion_piro'] + ' ' + request.form['hora_evaluacion_piro']
                 candidato.localizacion_eval = request.form['localizacion_eval']
+                candidato.fact_impulsos = request.form['fact_impulsos']
+                candidato.fact_energia = request.form['fact_energia']
+                candidato.fact_organicidad = (request.form['fact_organicidad'] == '1')
+                candidato.fact_intelectual = request.form['fact_intelectual']
+                candidato.fact_alerta = request.form['fact_alerta']
+                candidato.fact_animo = request.form['fact_animo']
+                candidato.fact_ansiedad = request.form['fact_ansiedad']
+                candidato.fact_sensopercepcion = request.form['fact_sensopercepcion']
+                candidato.apto = (request.form['apto'] == '1')
+                candidato.resultado_psic = (request.form['resultado_psic'] == '1')
+                candidato.resultado_polig = (request.form['resultado_polig'] == '1')
                 db.session.commit()
                 flash('Actualizado con éxito')
         except Exception as e:
             flash('Falló al actualizar: ', e)
             print(e)
     return redirect(url_for('evaluaciones.evaluaciones'))
+
+
+@evaluaciones_bp.route('/seeCandidato/<id>')
+def see_candidato(id):
+    candidato = Candidato.query.filter_by(id=id).first()
+    return render_template('evaluaciones/seeCandidato.html', reg=candidato, title='Ver Registro')
 
 
 @evaluaciones_bp.route('/deleteCandidato/<id>')
@@ -121,26 +138,28 @@ def downloadEval():
     return send_file(output, attachment_filename="Candidatos.xlsx", as_attachment=True)
 
 
-@evaluaciones_bp.route('/downloadReport')
-def downloadReport():
-    rendered = render_template('evaluaciones/pdf_template.html')
+@evaluaciones_bp.route('/downloadReport/<id>')
+def downloadReport(id):
+    candidato = Candidato.query.filter_by(id=id).first()
+    rendered = render_template('evaluaciones/pdf_template.html', reg=candidato)
     pdf = pdfkit.from_string(rendered, False)
     #https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf
     #https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/
     response = make_response(pdf)
     response.headers['Content-Type'] = 'application/pdf'
-    response.headers['Content-Disposition'] = 'attachement; filename=output.pdf'
+    response.headers['Content-Disposition'] = 'attachement; filename='+candidato.nombre+'_Certificado.pdf'
 
     return response
 
 
-@evaluaciones_bp.route('/downloadReport2')
-def downloadReport2():
-    rendered = render_template('evaluaciones/pdf_template2.html')
+@evaluaciones_bp.route('/downloadReport2/<id>')
+def downloadReport2(id):
+    candidato = Candidato.query.filter_by(id=id).first()
+    rendered = render_template('evaluaciones/pdf_template2.html', reg=candidato)
     pdf = pdfkit.from_string(rendered, False)
     response = make_response(pdf)
     response.headers['Content-Type'] = 'application/pdf'
-    response.headers['Content-Disposition'] = 'attachement; filename=output.pdf'
+    response.headers['Content-Disposition'] = 'attachement; filename='+candidato.nombre+'_Resultados.pdf'
 
     return response
 
