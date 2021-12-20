@@ -10,6 +10,7 @@ class Usuario(db.Model, UserMixin):
     nombre = db.Column(db.String(80), nullable=False)
     email = db.Column(db.String(256), unique=True, nullable=False)
     password = db.Column(db.String(128), nullable=False)
+    cedulaProfesional = db.Column(db.String(20), nullable=True)
     is_admin = db.Column(db.Boolean, default=False)
 
     def __repr__(self):

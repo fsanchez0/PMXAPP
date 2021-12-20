@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from flask import render_template, request, flash, redirect, url_for, send_file, make_response
 from flask_login import login_required, current_user
 from io import BytesIO
@@ -141,7 +143,10 @@ def downloadEval():
 @evaluaciones_bp.route('/downloadReport/<id>')
 def downloadReport(id):
     candidato = Candidato.query.filter_by(id=id).first()
-    rendered = render_template('evaluaciones/pdf_template.html', reg=candidato)
+    f_evaluacion_str = current_datetime_format(candidato.f_evaluacion_psic)
+    f_hoy_str = current_date_format(datetime.now())
+    print(f_hoy_str, " ", f_evaluacion_str)
+    rendered = render_template('evaluaciones/pdf_template.html', reg=candidato, fechaEval=f_evaluacion_str, fechaHoy=f_hoy_str)
     pdf = pdfkit.from_string(rendered, False)
     #https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf
     #https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/
@@ -155,7 +160,7 @@ def downloadReport(id):
 @evaluaciones_bp.route('/downloadReport2/<id>')
 def downloadReport2(id):
     candidato = Candidato.query.filter_by(id=id).first()
-    rendered = render_template('evaluaciones/pdf_template2.html', reg=candidato)
+    rendered = render_template('evaluaciones/pdf_template2.html', reg=candidato, fechaHoy=current_date_format(datetime.now()))
     pdf = pdfkit.from_string(rendered, False)
     response = make_response(pdf)
     response.headers['Content-Type'] = 'application/pdf'
@@ -163,3 +168,23 @@ def downloadReport2(id):
 
     return response
 
+
+def current_date_format(date):
+    months = ("Enero", "Febrero", "Marzo", "Abri", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
+    day = date.day
+    month = months[date.month - 1]
+    year = date.year
+    messsage = "{} de {} del {}".format(day, month, year)
+
+    return messsage
+
+
+def current_datetime_format(date):
+    months = ("Enero", "Febrero", "Marzo", "Abri", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
+    day = date.day
+    month = months[date.month - 1]
+    year = date.year
+    hour = date.hour
+    messsage = "{} de {} del {} a las {} horas".format(day, month, year, hour)
+
+    return messsage
